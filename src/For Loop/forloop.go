@@ -7,10 +7,15 @@ import (
 
 // Exercis to return square root of argument
 func Sqrt(x float64) float64 {
-	z := 1.0
-	z -= (z*z - x) / (2 * z)
-	fmt.Println("Square Root: ", z)
-	return 0.0
+	fmt.Println("Finding Square Root of ", x)
+	guess := 1.0
+	precision := 0.0001
+
+	for diff := guess*guess - x; diff > precision || diff < -precision; {
+		guess = (guess + x/guess) / 2.0
+		diff = guess*guess - x
+	}
+	return guess
 }
 
 // if statement can have logic before it
@@ -72,5 +77,5 @@ func main() {
 	)
 
 	// Exercise find Square Root
-	fmt.Println(Sqrt(2))
+	fmt.Println(Sqrt(10))
 }
