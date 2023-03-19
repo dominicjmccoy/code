@@ -30,4 +30,41 @@ func main() {
 	d[0] = "xxxx"
 	fmt.Println(c, d)
 	fmt.Println(names)
+
+	// Slice literals are like array literals without the length
+	arrayLit := [3]bool{true, true, true}
+	fmt.Println(arrayLit)
+
+	// no length needed for this slice. creates the array then builds a slive as reference to it
+	sliceLit := []bool{true, true, true}
+	fmt.Println(sliceLit)
+
+	q := []int{2, 3, 5, 7, 11, 13}
+	fmt.Println(q)
+
+	s := []struct {
+		i int
+		b bool
+	}{
+		{2, true},
+		{3, false},
+		{5, true},
+		{7, true},
+		{11, false},
+		{13, true},
+	}
+	fmt.Println(s)
+
+	// slice defaults
+	t := []int{2, 3, 5, 7, 11, 13}
+	u := t[1:4]
+	fmt.Println(u)
+
+	v := t[:2]
+	fmt.Println(v)
+
+	g := t[1:]
+	fmt.Println(g)
+	fmt.Println(t)
+
 }
