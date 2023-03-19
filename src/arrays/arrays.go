@@ -2,6 +2,10 @@ package main
 
 import "fmt"
 
+func printSlice(s []int) {
+	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+}
+
 func main() {
 	// create an array of 2 elements
 	// the length of the array is part of the declaration
@@ -67,4 +71,26 @@ func main() {
 	fmt.Println(g)
 	fmt.Println(t)
 
+	//print our slice
+	printSlice(t)
+
+	t = t[:0]
+	printSlice(t)
+
+	// Extend its length.
+	t = t[:4]
+	printSlice(t)
+
+	// Drop its first two values.
+	t = t[2:]
+	printSlice(t)
+
+	fmt.Println(t)
+
+	// Nil slices
+	var x []int
+	fmt.Println(x, len(x), cap(x))
+	if x == nil {
+		fmt.Println("nil!")
+	}
 }
