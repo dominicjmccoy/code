@@ -1,9 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func printSlice(s []int) {
 	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+}
+
+func printSlice2(s string, x []int) {
+	fmt.Printf("%s len=%d cap=%d %v\n",
+		s, len(x), cap(x), x)
 }
 
 func main() {
@@ -93,4 +100,20 @@ func main() {
 	if x == nil {
 		fmt.Println("nil!")
 	}
+
+	// Slices can be created with the built-in make function;
+	// this is how you create dynamically-sized arrays.
+	//The make function allocates a zeroed array and returns a slice that refers to that array:
+
+	myMake := make([]int, 5)
+	printSlice2("myMake", myMake)
+
+	//To specify a capacity, pass a third argument to make:
+	myMake2 := make([]int, 0, 5) // len(b)=0, cap(b)=5
+	printSlice2("myMake2", myMake2)
+
+	myMake3 := myMake2[:2]
+	printSlice2("myMake3", myMake3)
+	// slices can contain any type, including other slices
+
 }
